@@ -1,0 +1,237 @@
+.Card_Defaul {
+    display: flex;
+    max-width: 25vw;
+ 
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+.Card_Defaul p{
+    padding: 0;
+    margin: 0;
+ 
+
+}
+
+.Card_Defaul_Img {
+    padding: 20px;
+}
+
+.Card_Defaul_Img img {
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+}
+
+.Card_Defaul_Conten{
+    width: 100%;
+    font-size: 1rem;
+    padding: 20px;
+    border-left: 1px solid rgb(223, 184, 144);
+    background-color: rgb(247, 240, 234);
+}
+
+.Card_Defaul_Conten_Title{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+    width:200px;
+    
+     overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    word-wrap: normal; 
+}
+
+
+.Card_Defaul_Conten_Size_Price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Card_Defaul_Conten_Describe{
+    font-size: 0.8em;
+    width:240px;
+    color: rgb(109, 108, 108);
+    height: 40px;
+    overflow: auto; 
+    white-space: normal; 
+    word-wrap: break-word; 
+    margin-bottom: 10px;
+}
+
+.Card_Defaul_Conten_Describe::-webkit-scrollbar {
+    width: 6px; 
+    height: 6px; 
+}
+
+.Card_Defaul_Conten_Describe::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 5px; 
+}
+
+.Card_Defaul_Conten_Describe::-webkit-scrollbar-thumb {
+    background: rgb(150, 150, 150); 
+    border-radius: 5px; 
+}
+
+.Card_Defaul_Conten_Describe::-webkit-scrollbar-thumb:hover {
+    background: rgb(100, 100, 100); 
+}
+
+.Card_Defaul_Conten_Star{
+    margin-bottom: 10px;
+    color: rgb(235, 188, 34);
+    
+}
+
+.Card_Defaul_Conten_Size_Price{
+    margin-bottom: 20px;
+
+}
+
+.Card_Defaul_Conten_Size_Price_Size .Input2 input{
+    border: 2px solid rgb(252, 88, 23);
+}
+
+.Card_Defaul_Conten_Size_Price_Size .Input1 input{
+    border: 2px solid rgb(250, 179, 72);
+}
+.Card_Defaul_Conten_Size_Price_Size .Input3 input{
+    border: 2px solid rgb(255, 0, 0);
+}
+
+
+
+.Card_Defaul_Conten_Button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ 
+}
+
+.Card_Defaul_Conten_Button_WachMore button{
+    background: linear-gradient(135deg, rgb(71, 236, 254), rgb(203, 84, 235));
+    border-radius: 50px;
+    height: 40px;
+    padding: 0px 30px;
+    color: white;
+    font-weight: bold;
+ 
+
+    
+    border: 2px solid ;
+    animation: rainbowBorder 4s infinite linear;
+}
+.Card_Defaul_Conten_Button_WachMore button {
+    background: linear-gradient(135deg, rgb(255, 162, 0), rgb(38, 3, 2));
+    border-radius: 50px;
+    height: 40px;
+    padding: 0px 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease; 
+}
+
+.Card_Defaul_Conten_Button_WachMore button:hover {
+    background: linear-gradient(135deg, rgb(38, 3, 2), rgb(255, 162, 0));
+    transform: scale(1.05); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Card_Defaul_Conten_Button_Add_to_Card button {
+   background-color: rgb(164, 125, 85);
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.Card_Defaul_Conten_Button_Add_to_Card button:hover {
+    background-color: rgb(110, 86, 61);
+    transform: scale(1.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .Card_Defaul {
+        max-width: 45vw;
+    }
+
+    .Card_Defaul_Conten_Describe {
+        width: 180px; 
+    }
+
+    .Card_Defaul_Conten_Button_WachMore button {
+        font-size: 0.9rem; 
+    }
+
+    .Card_Defaul_Conten_Button_Add_to_Card button {
+        width: 35px; 
+    }
+}
+@media (max-width: 1500px) {
+    .Card_Defaul_Img{
+        padding: 0;
+    }
+    .Card_Defaul {
+        flex-direction: column; 
+        max-width: 49vw; 
+        padding: 10px; 
+    }
+
+    .Card_Defaul_Img {
+        width: 100% ;
+        height: auto;
+        margin-bottom: 15px; 
+    }
+
+    .Card_Defaul_Conten_Title {
+        font-size: 1.2rem; 
+        width:150px;
+    }
+
+    .Card_Defaul_Conten_Describe {
+        width: 100%; 
+        font-size: 0.75rem; 
+    }
+
+    .Card_Defaul_Conten_Star {
+        margin-bottom: 8px; 
+    }
+
+    .Card_Defaul_Conten_Button_WachMore button {
+        font-size: 0.9rem;
+        padding: 0px 20px;
+    }
+
+    .Card_Defaul_Conten_Button_Add_to_Card button {
+        font-size: 1.1rem; 
+        width: 35px;
+    }
+    .Card_Defaul_Conten_Describe{
+        width: 190px;
+    }
+}
+@keyframes rainbowBorder {
+    0% {
+        border-color: rgb(61, 20, 1);
+    }
+    50% {
+        border-color: rgb(219, 136, 0);
+    }
+    100% {
+        border-color: rgb(61, 20, 1);
+    }
+}

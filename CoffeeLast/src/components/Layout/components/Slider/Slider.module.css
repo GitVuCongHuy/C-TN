@@ -1,0 +1,192 @@
+.Slider {
+    position: fixed;
+
+    overflow: auto;
+    height: auto;
+    color: rgb(31, 33, 44);
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: rgba(0, 0, 0, 0.685) 0px 4px 16px;
+    background-color: white;
+    /* background: transparent; */
+    backdrop-filter: blur(20px);
+    border-radius: 0 10px 10px 0;
+    /* Thanh cuộn sang trái */
+    direction: rtl;
+    /* Đặt thanh cuộn về bên trái */
+    transform: translateX(0);
+
+    /* right: 0; */
+    transition: 300ms;
+    /* opacity: 1; */
+    /* display: block; */
+    left: 0;
+}
+
+.IsAvite {
+
+    transition: 300ms;
+
+    /* visibility: hidden;
+    opacity: 0; */
+    /* display: none; */
+    left: -300px;
+    /* transform: translateX(-300px); */
+
+
+}
+
+.Slider>* {
+    direction: ltr;
+    /* Giữ nội dung bên trong theo chiều từ trái sang phải */
+}
+
+/* Tùy chỉnh thanh cuộn */
+.Slider::-webkit-scrollbar {
+    width: 5px;
+    /* Độ rộng của thanh cuộn dọc */
+    height: 10px;
+    /* Độ cao của thanh cuộn ngang */
+}
+
+.Slider::-webkit-scrollbar-track {
+    background: #f4f4f400;
+    /* Màu nền của thanh cuộn */
+    border: none;
+}
+
+.Slider::-webkit-scrollbar-thumb {
+    background: rgb(241, 241, 242);
+    /* Màu thanh kéo (thumb) */
+}
+
+.Slider::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Màu thanh kéo khi hover */
+}
+
+
+.Slider_Page {
+    padding: 0px 0;
+    padding-top: 20px;
+}
+
+.Slider_Page ul {
+    padding: 0;
+
+
+
+}
+
+.Slider_Page li {
+    padding: 5px 40px 10px 10px;
+    transition: 300ms;
+
+
+}
+
+.Slider_Page li:hover {
+    background-color: rgb(227, 219, 207);
+    transition: 300ms;
+
+}
+
+.Slider_Page p {
+    padding: 0;
+    margin: 0;
+
+
+}
+
+.Slider_Page i {
+    font-size: 1.6rem;
+    margin-right: 10px;
+
+
+}
+
+.Slider_Page p {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+
+}
+
+.Slider #Title {
+    color: rgb(89, 91, 99);
+    font-size: 1rem;
+}
+
+.Slider_buuton {}
+
+.Slider_buuton button {
+    /* background-color: #555; */
+
+    transform: rotate(0);
+    transition: 300ms;
+    border: 1px solid transparent;
+
+
+
+}
+
+.Slider_buuton button i {
+    font-size: 2.7rem;
+    /* font-size: 48px; */
+    font-weight: bold;
+    color: #000000;
+    /* Màu chữ tạm thời */
+    /* background: linear-gradient(90deg, 
+    rgba(194, 13, 13, 0.1) 0%, 
+    rgba(0, 0, 0, 0.8) 50%, 
+    rgba(238, 234, 0, 0.1) 100%); */
+    background: #6F4E37;
+    background-size: 200% auto;
+    /* Kích thước lớn hơn để di chuyển */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Làm cho chữ trong suốt */
+    animation: shimmer 4s infinite;
+    transition: 300ms;
+
+}
+
+.Slider_buuton button i:hover {
+
+    font-size: 3.4rem;
+    transition: 300ms;
+    animation-play-state: paused
+}
+
+.Slider_buuton .button_IsAvite {
+    /* background-color: #555; */
+    transition: 300ms;
+    transform: rotate(180deg);
+
+
+}
+
+
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes zoom {
+
+    0%,
+    100% {
+        font-size: 20px;
+        /* Kích thước nhỏ nhất */
+    }
+
+    50% {
+        font-size: 40px;
+        /* Kích thước lớn nhất */
+    }
+}

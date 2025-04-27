@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Merienda:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&family=Sarina&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+/* Đặt toàn bộ container ở chế độ Flexbox */
+.container {
+    display: flex;
+    height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+    width: 100%;
+  }
+  
+  .leftcontent {
+    width: 50%; /* Chiếm nửa trái màn hình */
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(238, 234, 227); /* Nền tối cho phần văn bản */
+    padding-left: 20px;
+    padding-top: 60px;
+  }
+  .insideconten{
+    font-family: "Sour Gummy", sans-serif;
+    width: 100%; /* Chiếm nửa trái màn hình */
+    justify-content: left;
+    text-align: left;
+    color: rgb(221, 138, 43);
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+  .insidebigconten{
+    font-family: "Lexend Exa", sans-serif;
+    width: 100%; /* Chiếm nửa trái màn hình */
+    justify-content: left;
+    text-align: left;
+    color: black;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+  }
+  .insidesmailconten{
+    font-family: "Merienda", cursive;
+    width: 100%; /* Chiếm nửa trái màn hình */
+    justify-content: left;
+    text-align: left;
+    color: black;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .rightvideo {
+    width: 50%; /* Chiếm nửa phải màn hình */
+    height: 100%; /* Chiều cao video bằng chiều cao màn hình */
+    overflow: hidden;
+    position: relative; /* Để có thể định vị các phần tử bên trong */
+}
+
+.rightvideo video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo video bao phủ toàn bộ khu vực mà không bị bóp méo */
+}
+
+/* Chèn chữ lên video */
+.overlayText {
+    position: absolute;
+    top: 50%; /* Đặt chữ ở giữa video */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa theo cả chiều ngang và chiều dọc */
+    color: white;
+    font-size: 3rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Để chữ nổi bật lên trên video */
+    text-align: center;
+}
+
+  .centercontainer {
+    width: 100%; /* Chiếm nửa trái màn hình */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(248, 244, 238); /* Nền tối cho phần văn bản */
+    padding: 50px 350px;
+  }
+  .insidecenterconten{
+    font-family: "Sour Gummy", sans-serif;
+    width: 100%; /* Chiếm nửa trái màn hình */
+    justify-content: center;
+    text-align: center;
+    color: rgb(221, 138, 43);
+    padding-top: 20px;
+  }
+  .insidebigcenterconten{
+    font-family: "Lexend Exa", sans-serif;
+    width: 100%; /* Chiếm nửa trái màn hình */
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+  }
+  .insidesmailcenterconten{
+    font-family: "Merienda", cursive;
+    width: 100%; /* Chiếm nửa trái màn hình */
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;  
+  }
+
+  /* Ensure the .picture takes full width of the screen */
+.picture {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.leftimage img, .rightimages img {
+  width: 100%;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for opacity and scale */
+}
+
+.leftimage img {
+  width: 800px; /* Size of the left image */
+  height: 1120px;
+}
+
+.rightimages {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensures right side takes the remaining width */
+}
+
+.topimages {
+  display: flex;
+}
+
+.topimages img {
+  width: 50%; /* Size of images in the top row */
+}
+
+.bottomimage img {
+  width: 100%; /* Size of the bottom image */
+}
+
+/* Add the hovered effect */
+.hovered {
+  opacity: 0.7; /* Reduce opacity to indicate hover */
+  transform: scale(1.05); /* Slight zoom effect */
+  cursor: pointer; /* Change the cursor to a pointer */
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: absolute;
+  top: 10px; /* Position above the image */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 1;
+  display: block;
+}
+
+.imagebot img {
+  max-width: 100%;
+  height: 100%;
+}
+
+.textbot {
+  max-width: 50%;
+  padding-left: 20px;
+  padding-top: 50px;
+  background-color: rgb(238, 234, 227);
+}
+
+
+/* Media Queries cho thiết bị di động */
+@media screen and (max-width: 768px) {
+  .container {
+      flex-direction: column; 
+      height: auto;
+  }
+
+  .leftcontent, .rightvideo {
+      width: 100%; 
+  }
+
+  .centercontainer {
+      padding: 20px;
+  }
+
+  .picture {
+      flex-direction: column; 
+  }
+
+  .leftimage img {
+      width: 100%; 
+      height: auto; 
+  }
+
+  .topimages img {
+      width: 100%; 
+  }
+
+  .bottomimage img {
+      width: 100%; 
+  }
+
+  /* Thay đổi font size cho text khi trên thiết bị di động */
+  .overlayText {
+      font-size: 1.5rem;
+  }
+
+  .insidecenterconten, .insidebigconten, .insidesmailconten {
+      font-size: 1rem; 
+  }
+
+  .textbot {
+      max-width: 100%; 
+      padding-left: 0;
+  }
+}

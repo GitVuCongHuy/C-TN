@@ -1,0 +1,254 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Merienda:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&family=Sarina&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+.body {
+  background-color: #fafafa;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.textup {
+  align-items: center;
+  text-align: center;
+  padding-bottom: 50px;
+  background-image: url(/public/image/contact\ .jpg); /* Đường dẫn tới ảnh */
+  background-size: cover; /* Ảnh phủ đầy phần tử */
+  background-position: center; /* Căn giữa ảnh */
+  background-repeat: no-repeat; /* Không lặp lại ảnh */
+}
+
+.textdown {
+  align-items: center;
+  text-align: center;
+  padding-bottom: 50px;
+  background-size: cover; /* Ảnh phủ đầy phần tử */
+  background-position: center; /* Căn giữa ảnh */
+  background-repeat: no-repeat; /* Không lặp lại ảnh */
+}
+
+.blurText {
+  opacity: 0.1;
+  font-size: 150px;
+  font-weight: bold;
+  color: rgb(24, 5, 5);
+  align-items: center;
+  text-align: center;
+}
+
+.overlayTextUp {
+  margin-top: -150px;
+  font-size: 20px;
+  font-weight: 300;
+  color: rgb(25, 170, 20);
+}
+
+.overlayTextDown {
+  margin-top: -5px;
+  font-size: 40px;
+  font-weight: bold;
+  color: rgba(37, 23, 3, 0.89);
+}
+
+.contactContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 80px;
+  padding-bottom: 50px;
+  background-color: rgb(238, 234, 227);
+}
+
+.contactItem {
+  text-align: center;
+  width: 200px;
+  font-size: 50px;
+}
+
+.iconBox {
+  border: 1px solid rgb(158, 106, 9);
+  height: 120px;
+  width: 120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.iconBox:hover {
+  background-color: rgb(158, 106, 9);
+}
+
+.icon {
+  font-size: 50px;
+  color: rgb(158, 106, 9);
+}
+
+.iconBoxGreen {
+  border-color: green;
+}
+
+.iconGreen {
+  color: green;
+  font-size: 50px;
+}
+
+.textTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.textDescription {
+  font-size: 14px;
+  color: #555;
+}
+
+.textFAQ {
+  align-items: center;
+  text-align: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.smailcontent {
+  font-family: "Lexend Exa", sans-serif;
+  justify-content: left;
+  text-align: left;
+  color: black;
+}
+
+.insidesmailconten {
+  font-family: "Merienda", cursive;
+  justify-content: left;
+  text-align: left;
+  color: black;
+  font-size: 15px;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom_accordion {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.smailcontent:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  .textup .blurText {
+    font-size: 80px;
+    padding-top: 50px;
+  }
+
+  .textdown .blurText {
+    font-size: 80px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+  }
+
+  .textTitle {
+    font-size: 16px;
+  }
+
+  .contactItem {
+    width: 180px;
+    font-size: 40px;
+  }
+
+  .textDescription {
+    font-size: 12px;
+  }
+
+  .contactContainer {
+    gap: 30px;
+  }
+
+  .textFAQ {
+    padding-top: 20px;
+  }
+
+  /* Accordion Adjustments for Small Screens */
+  .smailcontent {
+    font-size: 16px;
+  }
+
+  .insidesmailconten {
+    font-size: 14px;
+  }
+
+  .iconBox {
+    height: 100px;
+    width: 100px;
+  }
+
+  .icon {
+    font-size: 40px;
+  }
+
+  .iconGreen {
+    font-size: 40px;
+  }
+
+  .custom_accordion {
+    padding: 10px;
+  }
+
+  .overlayTextUp {
+    font-size: 16px;
+  }
+
+  .overlayTextDown {
+    font-size: 28px;
+  }
+}
+
+/* Further mobile enhancements */
+@media (max-width: 480px) {
+  .textup, .textdown {
+    padding-bottom: 30px;
+  }
+
+  .textTitle {
+    font-size: 14px;
+  }
+
+  .contactItem {
+    width: 160px;
+    font-size: 30px;
+  }
+
+  .iconBox {
+    height: 90px;
+    width: 90px;
+  }
+
+  .icon {
+    font-size: 35px;
+  }
+
+  .iconGreen {
+    font-size: 35px;
+  }
+
+  .textDescription {
+    font-size: 10px;
+  }
+
+  .smailcontent {
+    font-size: 14px;
+  }
+
+  .insidesmailconten {
+    font-size: 13px;
+  }
+}

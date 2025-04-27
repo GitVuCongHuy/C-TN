@@ -1,0 +1,206 @@
+.Container{
+  max-width: 1000px;
+  margin: auto;
+  padding-top: 10px;
+  font-size: 1rem;
+  color: rgb(200, 200, 200);
+
+}
+.Container_Cart{
+  background-color: rgb(245, 245, 245);
+}
+.Cart_Layout{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+.Cart_Layout_Right{
+  display: flex;
+  align-items: center;
+}
+.Cart_Layout_Right div{
+ 
+  width: 110px;
+  height: 50px;
+}
+
+
+.Cart_Layout_Left{
+  display: flex;
+  margin-left: 10px;
+
+}
+.Cart_Layout_Left p{
+  margin: 0;
+
+
+}
+.Cart_Layout_Left div{
+
+  padding: 0 10px;
+  
+
+}
+
+
+
+.Cart_Layout_Right p{
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.Body_Cart_Img>img{
+  width: 80px;
+}
+.Body_Cart {
+  margin-top: 10px;
+  padding: 20px 0;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Cart_Layout_Right_Operation {
+  display: flex;
+  justify-content: center;
+}
+
+.Cart_Layout_Right_Operation button{
+    height: 40px;
+}
+
+.BodyCart{
+  color: black;
+  margin: 30px 0;
+  border-bottom: 1px solid rgb(245, 245, 245);
+  padding-bottom: 10px;
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.Header_Cart{
+ 
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.Pay_Cart{
+  margin-top: 20px;
+  position: sticky ;
+  bottom: 10px;
+  
+}
+
+.CartPay{
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.938);
+  color: black;
+  z-index: 1000;
+
+
+  
+}
+.CartPay>div{
+  display: flex;
+  align-items: center;
+}
+
+.CartPay p{
+  margin: 0;
+}
+
+.CartPay_Input{
+  margin-right: 10px;
+}
+
+.CartPay_purchase>button{
+  width: 200px;
+  margin: 0 10px;
+  background-color: rgb(240, 93, 64);
+}
+
+#CartPay_Price{
+
+  color: rgb(240, 93, 64);
+  font-weight: bold;
+}
+
+
+/* Thêm Media Query cho các màn hình nhỏ như điện thoại */
+@media (max-width: 768px) {
+  .Header_Cart{
+    display: none ;
+  }
+  .Container {
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .Cart_Layout {
+    flex-direction: column;
+    align-items: flex-start; /* Thay đổi kiểu hiển thị khi trên điện thoại */
+  }
+
+  .Cart_Layout_Left, .Cart_Layout_Right {
+    width: 100%; /* Đảm bảo mỗi phần chiếm toàn bộ chiều rộng */
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .Body_Cart {
+    padding: 10px 10px;
+  }
+
+  .Cart_Layout_Right_Operation {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .CartPay {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .CartPay > div {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .CartPay_purchase > button {
+    width: 100%; /* Đảm bảo nút mua hàng đầy đủ chiều rộng trên màn hình nhỏ */
+  }
+
+  .Cart_Layout_Left div {
+    padding: 5px;
+  }
+
+  .Cart_Layout_Right p, .Cart_Layout_Left p {
+    font-size: 0.875rem; /* Giảm kích thước font chữ cho dễ nhìn trên màn hình nhỏ */
+  }
+
+  .Body_Cart_Name a {
+    font-size: 0.875rem; /* Giảm kích thước chữ tiêu đề sản phẩm */
+  }
+
+  .Cart_Layout_Right_Unit_Price, .Cart_Layout_Right_Price, .Cart_Layout_Right_Quantity {
+    font-size: 0.875rem; /* Cỡ chữ sản phẩm nhỏ hơn trên điện thoại */
+  }
+  .CartPay_purchase>button{
+
+    width: 120px;
+    margin: 0 0px;
+    background-color: rgb(240, 93, 64);
+  }
+  .Cart_Layout_Right p{
+    padding-left: 40px;
+    
+    margin: 0;
+  }
+}
+

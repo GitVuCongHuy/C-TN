@@ -1,0 +1,11 @@
+Model Information:
+* title:	Coffee Bean
+* source:	https://sketchfab.com/3d-models/coffee-bean-6f8acb0c5b2643a38a6ddaeed055c05e
+* author:	mikethornley (https://sketchfab.com/mikethornley)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Coffee Bean" (https://sketchfab.com/3d-models/coffee-bean-6f8acb0c5b2643a38a6ddaeed055c05e) by mikethornley (https://sketchfab.com/mikethornley) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

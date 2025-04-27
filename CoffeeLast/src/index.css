@@ -1,0 +1,71 @@
+@import 'normalize.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #fe2c55;
+  --secondary: #1e1e2c;
+  --text-color: #333;
+  --background-color: #f9f9f9;
+  --font-base-size: 1.6rem;
+  --font-base-line-height: 1.5;
+}
+
+html {
+  font-size: 90.5%; 
+}
+
+body {
+  font-family: sans-serif,"Faculty Glyphic";
+  font-weight: 400;
+  font-style: normal;
+
+
+  font-size: var(--font-base-size);
+  line-height: var(--font-base-line-height);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+ picture, video, canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}

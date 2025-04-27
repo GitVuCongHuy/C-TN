@@ -1,0 +1,9 @@
+.Layout_Header{
+
+}
+
+.Layout_Slider{
+    position: fixed;
+    top: 200px;
+    z-index: 100;
+}

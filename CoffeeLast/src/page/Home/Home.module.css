@@ -1,0 +1,381 @@
+.Container{
+   
+}
+
+.Header_Home{
+    background-image: url(/public/image/coffeebean-hero-coffee-cup.jpg);
+    background-size: cover; /* Đảm bảo ảnh phủ kín toàn bộ phần tử */
+    background-position: center; /* Đặt ảnh ở giữa */
+    background-repeat: no-repeat; /* Không lặp lại ảnh */
+    height: 60vh;
+    margin-bottom: 100px;
+}
+
+.Header_Home_Left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    
+}
+
+.Header_Home_Left_Conten{
+    padding: 30px;
+    text-align: center;
+}
+.Header_Home_Left_Conten p{
+   margin: 40px 0;
+}
+
+.Header_Home_Left_Conten_H1{
+    font-size:2.8rem;
+    font-weight: bold;
+}
+
+.Header_Home_Left_Conten_H2{
+    font-size:1.3rem;
+    color: rgb(109, 108, 108);
+}
+
+.Header_Home_Left_Conten button{
+    border: 1px solid rgb(219, 148, 87);
+    width: 120px;
+    font-size: 1.6rem;
+    transition: 300ms;
+
+}
+
+.Header_Home_Left_Conten button:hover{
+   background-color:rgb(219, 148, 87) ;
+   transition: 300ms;
+   color:  white;
+    
+}
+
+
+
+
+/* lismenu */
+/* lismenu */
+/* lismenu */
+.Home_List_Menu{
+    margin-top: 100px;
+   
+}
+
+.Home_List_Menu_Conten_Sm {
+    padding: 0 !important;
+    margin: 0;
+   
+}
+
+
+.Home_List_Menu_Conten_Sm div{
+    background-size: cover; /* Đảm bảo ảnh phủ kín toàn bộ phần tử */
+    background-position: center; /* Đặt ảnh ở giữa */
+    background-repeat: no-repeat; /* Không lặp lạ*/
+
+}
+
+
+.Home_List_Menu_Conten_Sm div{
+    background-size: cover; /* Đảm bảo ảnh phủ kín toàn bộ phần tử */
+    background-position: center; /* Đặt ảnh ở giữa */
+    background-repeat: no-repeat; /* Không lặp lạ*/
+
+    height: 50vh;
+    
+}
+
+.Home_List_Menu_Conten__Sm_1{
+    
+    background-image: url(/public/image/coffeebean-coffee-cup-black.jpg);
+}
+.Home_List_Menu_Conten__Sm_2{
+    
+    background-image: url(/public/image/leaf.jpg);
+}
+
+.Home_List_Menu_Conten__Sm_3{
+    
+    background-image: url(/public/image/coffeebean-iced-coffee-1.jpg);
+}
+
+
+.Home_List_Menu_Conten_Sm>div{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    
+    padding-top: 15vh;
+  
+}
+
+.Home_List_Menu_Conten_head{
+    font-size: 1rem;
+}
+
+.Home_List_Menu_Conten_mony{
+    font-size: 2rem;
+
+}
+.Home_List_Menu_Conten_conten{
+    font-size: 1.3rem;
+}
+
+.Home_List_Menu p{
+    margin: 40px 0;
+}
+
+.Home_List_Menu button{
+   background-color: white;
+   color: rgb(90, 90, 90);
+  
+   width: 150px;
+   transition: 300ms;
+}
+
+.Home_List_Menu button:hover{
+    background-color: rgb(16, 16, 32);
+    color: rgb(255, 255, 255);
+    width: 150px;
+    transition: 300ms;
+    
+ }
+
+ /* SidlerCart */
+ /* SidlerCart */
+  /* SidlerCart */
+   /* SidlerCart */
+
+.Card_Slidler {
+    margin-top: 30vh;
+    margin-bottom: 30vh;
+   
+}
+
+.Card_Slidler_Title {
+    width: 100%;
+}
+
+.Card_Slidler_Title>div {
+    max-width: 50vw;
+    margin: auto;
+    text-align: center;
+    color: rgb(51, 51, 51);
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.Card_Slidle_Body {
+    /* background: linear-gradient(35deg, rgb(194, 217, 227), rgb(241, 236, 233)); */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgb(0, 0, 0)), /* Lớp phủ tối */
+        url(https://xofacafebistro.com/wp-content/uploads/2023/01/coffee-cup-coffee-beans-1.jpg); /* Hình nền */
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 50px 0;
+   
+}
+
+
+.Card_Slidle_Body_Conten {
+    background-color: rgb(255, 255, 255);
+    max-width: 50vw;
+    margin: auto;
+    border-radius: 30px;
+    
+  
+}
+
+.Card_Slidle_Body_Conten_Left {
+    display: flex;
+    height: 50vh;
+    align-items: center;
+}
+
+.Card_Slidle_Body_Conten_Left_Img {
+    background: linear-gradient(135deg, #FFA500, #FF4500);
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.Card_Slidle_Body_Conten_Right {
+    display: flex;
+    height: 50vh;
+    align-items: center;
+}
+
+.Card_Slidle_Body_Conten_Right_Conten_Date {
+    color: rgb(143, 141, 153);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.Card_Slidle_Body_Conten_Right_Conten_Title {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.Card_Slidle_Body_Conten_Right_Conten_Conten {
+    color: rgb(143, 141, 153);
+    font-size: 1em;
+}
+
+.Card_Slidle_Body_Conten_Right_Conten button {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(300deg, rgb(240, 234, 226), rgb(221, 181, 136));
+    font-size: 1em;
+    width: 200px;
+    border-radius: 50px;
+    height: 60px;
+    margin-top: 10px;
+    transition: 1000ms;
+}
+
+.Card_Slidle_Body_Conten_Right_Conten_Image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 30px 30px 0;
+}
+
+.Card_Slidle_Body_Conten_Right_Conten button:hover {
+    background: linear-gradient(100deg, rgba(61, 61, 60, 0), rgba(228, 143, 47, 0));
+    background-color: rgb(91, 53, 28);
+    color: rgb(255, 255, 255);
+    transition: 1000ms;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .Card_Slidler {
+        margin: 50px 0;
+    }
+
+    .Card_Slidler_Title>div {
+        font-size: 2rem;
+        max-width: 80vw;
+    }
+
+    .Card_Slidle_Body_Conten {
+        max-width: 90vw;
+    }
+
+    .Card_Slidle_Body_Conten_Left {
+        height: 40vh;
+    }
+
+    .Card_Slidle_Body_Conten_Right {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+
+    .Card_Slidle_Body_Conten_Right_Conten_Date {
+        margin-top: 20px;
+        font-size: 1rem;
+    }
+
+    .Card_Slidle_Body_Conten_Right_Conten_Title {
+        font-size: 1.5rem;
+    }
+
+    .Card_Slidle_Body_Conten_Right_Conten_Conten {
+        font-size: 0.9rem;
+    }
+
+    .Card_Slidle_Body_Conten_Right_Conten button {
+        width: 150px;
+        height: 50px;
+        font-size: 0.9rem;
+        margin-bottom: 40px;
+    }
+
+    .Card_Slidle_Body_Conten_Right_Conten_Image {
+        border-radius: 20px;
+        
+    }
+
+ 
+}
+
+/* Home_About_Us */
+/* Home_About_Us */
+/* Home_About_Us */
+/* Home_About_Us */
+
+
+.Home_About_Us{
+    margin-top: 20vh;
+    text-align: center;
+    margin-bottom: 20vh;
+}
+.Home_About_Us_Title{
+    font-size: 3.2rem;
+
+    
+}
+
+.Home_About_Us_vertical_line{
+    width: 2px;
+    height: 40px;
+    background-color: rgb(219, 148, 87);
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.Home_About_Us_Conten{
+    max-width: 40vw;
+    margin: auto;
+    font-size: 1.2rem;
+}
+
+
+
+.Home_About_Us_Conten button{
+    border: 2px solid rgb(219, 148, 87);
+    width: 187px;
+    height: 43px;
+    font-size: 1.6rem;
+    transition: 300ms;
+    font-size: 1rem;
+    margin-top: 30px;
+    margin-bottom: 70px;
+
+
+}
+
+.Home_About_Us_Conten button:hover{
+   background-color:rgb(219, 148, 87) ;
+   transition: 300ms;
+   color:  white;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .Home_About_Us_Conten{
+        max-width: 100%;
+        margin: auto;
+        font-size: 1.2rem;
+    }
+    
+}
+
+
+/* List_Card */
+
+
+
+.List_Card{
+   
+    max-width: 1600px;
+  
+    margin: auto;
+    margin-bottom: 200px;
+
+}
