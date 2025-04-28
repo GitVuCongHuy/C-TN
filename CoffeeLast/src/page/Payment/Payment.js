@@ -184,7 +184,8 @@ const CheckoutPage = () => {
             {showSuccess && (
                 <>
                     {/* Chỉ bắn pháo hoa nếu là đơn delivery thành công */}
-                    {successOrderId && deliveryOption === 'delivery' && <Confetti recycle={false} numberOfPieces={400} width={window.innerWidth} height={window.innerHeight}/>}
+                    <Confetti recycle={false} numberOfPieces={400} width={window.innerWidth} height={window.innerHeight}/>
+
                     <Modal show={showSuccess} centered onHide={handleBackToHome} backdrop="static">
                         <Modal.Body className="text-center p-4 p-md-5">
                             <h1 className="text-success mb-3" style={{ fontSize: '3rem' }}>🎉</h1>
