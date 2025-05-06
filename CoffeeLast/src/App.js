@@ -18,7 +18,7 @@ import List_Oders from "./page/Order/List_Oders";
 import ListProduct from "./page/Menu/List_Product";
 import UpdateProduct from "./page/Menu/UpdateProduct";
 import AdminOrderManagement from "./page/Order/Order_Management";
-
+import ResetPassword from './page/Login_Register/ResetPassword';
 // import AddBranch from "./page/List_Base/AddBranch";
 // import BranchList from "./page/List_Base/BranchList";
 // import ProductDetails from "./page/ProductDetail/Product_Detail";
@@ -39,7 +39,7 @@ function App() {
               <Route path="/login_register" element={<Slider_Layout><Login_Register/></Slider_Layout>} />
               <Route path="/product/:id" element={<Default_Layout><ProductDetail /></Default_Layout>} />
               <Route path="/contact" element={<Default_Layout><Contact/></Default_Layout>} />
-
+              <Route path="/reset-password" element={<ResetPassword />} />
               {/* KhachHang */}
               <Route path="/update_user" element={<Default_Layout><UpdateUser/></Default_Layout>} />
               <Route path="/payment" element={<Default_Layout><Payment/></Default_Layout>} />   

@@ -12,7 +12,6 @@ const AddProduct = () => {
   });
 
   const [branches, setBranches] = useState([]);
-  const [menuProducts, setMenuProducts] = useState([]);
   const [previewData, setPreviewData] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedUrl, setUploadedUrl] = useState('');
@@ -67,12 +66,12 @@ const AddProduct = () => {
 
   return (
     <div className="container my-5">
-<h2
-  className="text-center mb-4"
-  style={{ color: "#6F4E37" }}
->
-  Add new products
-</h2>
+      <h2
+        className="text-center mb-4"
+        style={{ color: "#6F4E37" }}
+      >
+        Add new products
+      </h2>
       <div className="card shadow-sm p-4">
         <form onSubmit={handleSubmit}>
           <div className="row g-3">
@@ -135,74 +134,74 @@ const AddProduct = () => {
               <div className="d-flex align-items-center gap-3">
                 <FileUpload onFileSelect={handleFileSelect} />
                 <button
-  type="button"
-  className="btn"
-  style={{
-    backgroundColor: "#6F4E37",
-    borderColor: "#6F4E37",
-    color: "#fff",
-  }}
-  onClick={async () => {
-    if (!selectedFile) return alert("Please select file!");
-    setIsUploading(true);
-    const formDataToUpload = new FormData();
-    formDataToUpload.append("file", selectedFile);
-    formDataToUpload.append("upload_preset", "coffe_shop");
-    try {
-      const res = await fetch(
-        "https://api.cloudinary.com/v1_1/dp1fm5pqd/image/upload",
-        { method: "POST", body: formDataToUpload }
-      );
-      const data = await res.json();
-      if (data.secure_url) {
-        setUploadedUrl(data.secure_url);
-        setFormData({ ...formData, img: data.secure_url });
-      }
-    } catch (err) {
-      console.error(err);
-    }
-    setIsUploading(false);
-  }}
->
-  {isUploading ? "loading..." : "Upload"}
-</button>
+                  type="button"
+                  className="btn"
+                  style={{
+                    backgroundColor: "#6F4E37",
+                    borderColor: "#6F4E37",
+                    color: "#fff",
+                  }}
+                  onClick={async () => {
+                    if (!selectedFile) return alert("Please select file!");
+                    setIsUploading(true);
+                    const formDataToUpload = new FormData();
+                    formDataToUpload.append("file", selectedFile);
+                    formDataToUpload.append("upload_preset", "coffe_shop");
+                    try {
+                      const res = await fetch(
+                        "https://api.cloudinary.com/v1_1/dp1fm5pqd/image/upload",
+                        { method: "POST", body: formDataToUpload }
+                      );
+                      const data = await res.json();
+                      if (data.secure_url) {
+                        setUploadedUrl(data.secure_url);
+                        setFormData({ ...formData, img: data.secure_url });
+                      }
+                    } catch (err) {
+                      console.error(err);
+                    }
+                    setIsUploading(false);
+                  }}
+                >
+                  {isUploading ? "loading..." : "Upload"}
+                </button>
 
               </div>
               {uploadedUrl && <img src={uploadedUrl} alt="Preview" className="img-thumbnail mt-2" style={{ maxWidth: '200px' }} />}
             </div>
           </div>
           <button
-  type="submit"
-  className="btn mt-4 w-100"
-  style={{ backgroundColor: "#6F4E37", borderColor: "#6F4E37", color: "#fff" }}
->
-  Preview
-</button>
+            type="submit"
+            className="btn mt-4 w-100"
+            style={{ backgroundColor: "#6F4E37", borderColor: "#6F4E37", color: "#fff" }}
+          >
+            Preview
+          </button>
         </form>
       </div>
 
       {previewData && (
         <div className="card mt-5 p-4 shadow-sm">
-<h4
-  className="text-center"
-  style={{ color: "#6F4E37" }}
->
-  
-</h4>
+          <h4
+            className="text-center"
+            style={{ color: "#6F4E37" }}
+          >
+
+          </h4>
           <table className="table table-bordered">
             <tbody>
               <tr><th>Name</th><td>{previewData.name}</td></tr>
-              <tr><th>Price</th><td>{previewData.price} VNĐ</td></tr>
+              <tr><th>Price</th><td>{previewData.price} $</td></tr>
               <tr><th>Image</th><td><img src={previewData.img} alt="Ảnh sản phẩm" style={{ width: '100px' }} /></td></tr>
             </tbody>
           </table>
           <button
-  className="btn w-100"
-  style={{ backgroundColor: "#6F4E37", borderColor: "#6F4E37", color: "#fff" }}
-  onClick={submitProduct}
->
-  Add product
-</button>
+            className="btn w-100"
+            style={{ backgroundColor: "#6F4E37", borderColor: "#6F4E37", color: "#fff" }}
+            onClick={submitProduct}
+          >
+            Add product
+          </button>
         </div>
       )}
     </div>

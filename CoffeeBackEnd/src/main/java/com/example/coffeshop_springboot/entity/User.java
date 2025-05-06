@@ -29,6 +29,9 @@ public class User {
     @Column
     private String address;
 
+    @Column(name = "user_type", nullable = false)
+    private String user_type;
+
     @Column(name = "created_at")
     private LocalDateTime created_at;
 
@@ -37,7 +40,13 @@ public class User {
     private List<UserRole> userRoles = new ArrayList<>();
 
     private String img;
+     public String getUser_type() {
+         return user_type;
+     }
 
+     public void setUser_type(String user_type) {
+         this.user_type = user_type;
+     }
     public String getImg() {
         return img;
     }

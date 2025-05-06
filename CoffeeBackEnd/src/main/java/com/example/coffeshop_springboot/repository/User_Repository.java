@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface User_Repository extends JpaRepository<User, Long> {
     Optional<User> findByUserId(Long id);  // Use 'user_id' as the field name in the entity
     Optional<User> findByEmail(String email);
-
+    boolean existsByEmail(String email);
 }

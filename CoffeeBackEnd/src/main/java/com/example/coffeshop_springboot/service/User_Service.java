@@ -12,7 +12,6 @@ public class User_Service {
     @Autowired
     private User_Repository userRepository;
 
-    //Tạo Bảng Dữ liệu user mới
     public User new_User(){
         try {
             User user = new User();

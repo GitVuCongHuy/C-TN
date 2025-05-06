@@ -18,7 +18,7 @@ const AdminNotificationItem = React.memo(({ notification, onMarkAsRead }) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        if (notification.read === false) { // Dùng notification.read
+        if (notification.read === false) { 
             onMarkAsRead(notification.id || notification.orderId);
         }
 
@@ -104,17 +104,17 @@ function HeaderTikTok() {
     const [initialFetchDone, setInitialFetchDone] = useState(false);
 
     useEffect(() => {
-        if (roles && Array.isArray(roles)) { // Kiểm tra roles có phải là mảng và không rỗng/null
+        if (roles && Array.isArray(roles)) { 
             setRolesLoaded(true);
             console.log("Roles loaded from context:", roles);
         } else {
-            setRolesLoaded(false); // Đặt lại nếu roles bị xóa hoặc không hợp lệ
+            setRolesLoaded(false); 
             console.log("Roles not loaded or invalid:", roles);
         }
     }, [roles]);
     
     const hasRole = useCallback((roleName) => {
-        if (!rolesLoaded) return false; // Trả về false nếu roles chưa load
+        if (!rolesLoaded) return false; 
         return roles.some((role) => role?.role?.roleName === roleName);
     }, [roles, rolesLoaded]);
 
@@ -129,7 +129,7 @@ function HeaderTikTok() {
         console.log("Skipping fetch: No token, roles not loaded, or not admin/staff.");
         if (!initialFetchDone) setInitialFetchDone(true);
         setAdminNotifications([]);
-        setUnreadAdminCount(0); // Reset count nếu không fetch
+        setUnreadAdminCount(0); 
         setNotificationError(null);
         return;
     }
@@ -150,24 +150,21 @@ function HeaderTikTok() {
         const notifications = Array.isArray(data) ? data : [];
         const readNotificationsStorage = JSON.parse(localStorage.getItem('readAdminNotifications') || '{}');
         const count = notifications.filter(n => {
-            const notificationKey = n.id || n.orderId; // Lấy key định danh
-            const isLocallyRead = !!readNotificationsStorage[notificationKey]; // Kiểm tra trong localStorage
-            // Chỉ tính là chưa đọc nếu API trả về read:false VÀ nó chưa được đánh dấu đọc trong localStorage
+            const notificationKey = n.id || n.orderId; 
+            const isLocallyRead = !!readNotificationsStorage[notificationKey];
             return n.read === false && !isLocallyRead;
         }).length;
 
-        console.log("Read notifications from localStorage:", readNotificationsStorage); // Log thêm
+        console.log("Read notifications from localStorage:", readNotificationsStorage); 
         console.log("Calculated unread count (API + localStorage):", count);
 
         setAdminNotifications(notifications);
-        setUnreadAdminCount(count); // <-- Cập nhật số đếm chưa đọc từ API
+        setUnreadAdminCount(count); 
 
     } catch (error) {
         console.error("Error fetching admin notifications:", error);
         setNotificationError(error.message || "Could not load notifications.");
-        // Không xóa thông báo cũ nếu fetch sau đó bị lỗi, giữ lại UI cũ
-        // setAdminNotifications([]);
-        // setUnreadAdminCount(0);
+
     } finally {
         setLoadingAdminNotifications(false);
         if (!initialFetchDone) setInitialFetchDone(true);
@@ -180,12 +177,11 @@ useEffect(() => {
 
     const runFetch = async () => {
         if (isMounted) {
-            await fetchAdminNotifications(true); // Fetch lần đầu, có thể hiện loading
+            await fetchAdminNotifications(true);
         }
     };
 
     if (token && rolesLoaded) {
-        // Kiểm tra lại là admin/staff mới chạy fetch và polling
         if (isAdmin || isStaff) {
             console.log("Running initial fetch (roles loaded)...");
             runFetch();
@@ -196,7 +192,7 @@ useEffect(() => {
                     intervalId = setInterval(() => {
                         console.log("Polling for admin notifications...");
                         fetchAdminNotifications(false);
-                    }, 15000); // Giảm polling interval xuống 15s để test
+                    }, 15000); 
                 } else if (isMounted) {
                     console.log("Waiting for initial fetch to complete before polling...");
                     setTimeout(checkAndStartPolling, 500);
@@ -204,29 +200,24 @@ useEffect(() => {
             }
             checkAndStartPolling();
         } else {
-             // Là customer hoặc role khác, reset admin state
              console.log("User is not admin/staff, resetting admin notifications state.");
              setAdminNotifications([]);
              setUnreadAdminCount(0);
              setNotificationError(null);
-             setInitialFetchDone(true); // Đánh dấu xong (vì không cần fetch admin)
+             setInitialFetchDone(true); 
         }
    } else if (!token) {
-        // Không có token (anonymous), reset admin state
         console.log("No token, resetting admin notifications state.");
         setAdminNotifications([]);
         setUnreadAdminCount(0);
         setNotificationError(null);
         setInitialFetchDone(true);
    } else {
-        // Có token nhưng roles chưa load
         console.log("Token exists, but roles not loaded yet. Waiting...");
-        // Không làm gì, đợi useEffect của rolesLoaded trigger lại
-        setInitialFetchDone(false); // Đảm bảo initial fetch sẽ chạy khi roles load xong
+        setInitialFetchDone(false); 
    }
 
 
-    // Cleanup function: Hủy interval khi component unmount hoặc dependencies thay đổi
     return () => {
         isMounted = false;
         if (intervalId) {
@@ -234,7 +225,6 @@ useEffect(() => {
             console.log("Cleared notification polling interval.");
         }
     };
-    // Chạy lại effect này khi token hoặc vai trò thay đổi, hoặc khi initialFetchDone thay đổi để bắt đầu polling
 }, [token, rolesLoaded, isAdmin, isStaff, fetchAdminNotifications, initialFetchDone]);
 
 const handleMarkAdminNotificationRead = useCallback(async (orderId) => { 
@@ -242,29 +232,22 @@ const handleMarkAdminNotificationRead = useCallback(async (orderId) => {
 
     const notificationBeingMarked = adminNotifications.find(n => n.orderId === orderId);
     const wasUnread = notificationBeingMarked && notificationBeingMarked.read === false;
-    console.log("[MarkAsRead] Notification found:", notificationBeingMarked); // Thêm log
+    console.log("[MarkAsRead] Notification found:", notificationBeingMarked); 
     console.log("[MarkAsRead] Was unread:", wasUnread);
 
-    // Cập nhật trạng thái isRead trong state ngay lập tức (Optimistic Update)
     setAdminNotifications(prev => prev.map(n =>
-        (n.orderId === orderId) // Cập nhật tất cả notif có cùng orderId? Hoặc chỉ cái đầu tiên? Cẩn thận chỗ này
-        ? { ...n, read: true } // Tạm đánh dấu đã đọc ở UI
+        (n.orderId === orderId) 
+        ? { ...n, read: true } 
         : n
     ));
     console.log("[MarkAsRead] Updated adminNotifications state (optimistic)");
     
     
     if (wasUnread) {
-        // Chỉ giảm count nếu có ít nhất 1 notif chưa đọc cho orderId này
-        // Logic giảm count có thể cần xem lại nếu có nhiều notif cho 1 order
-         setUnreadAdminCount(prev => Math.max(0, prev - 1)); // Tạm giảm 1
+         setUnreadAdminCount(prev => Math.max(0, prev - 1)); 
          console.log("[MarkAsRead] Decremented count (optimistic)");
     }
 
-    // Cập nhật số đếm chưa đọc (chỉ giảm nếu nó thực sự chưa đọc)
- 
-
-    // Lưu trạng thái đã đọc vào localStorage để duy trì qua các lần fetch polling
     const keyForStorage = notificationBeingMarked?.notificationId || orderId;
      const readNotifications = JSON.parse(localStorage.getItem('readAdminNotifications') || '{}');
      readNotifications[keyForStorage] = true;
@@ -282,11 +265,8 @@ const handleMarkAdminNotificationRead = useCallback(async (orderId) => {
         });
         if (!response.ok) {
             console.error("[MarkAsRead] API Error:", response.status);
-             // Có thể cần rollback optimistic update nếu API lỗi
-             // Ví dụ: fetch lại hoặc set lại state read=false và tăng count
         } else {
              console.log("[MarkAsRead] API Success for order:", orderId);
-             // Không cần làm gì, polling sẽ cập nhật
         }
      } catch (error) {
          console.error("[MarkAsRead] API Exception:", error);
@@ -296,7 +276,7 @@ const handleMarkAdminNotificationRead = useCallback(async (orderId) => {
 
     const handleLogout = () => {
         removeToken();
-        localStorage.removeItem('readAdminNotifications'); // Xóa trạng thái đọc khi logout
+        localStorage.removeItem('readAdminNotifications'); 
     };
 
     const getFullAvatarUrl = (avatarPath) => {
@@ -377,9 +357,6 @@ const handleMarkAdminNotificationRead = useCallback(async (orderId) => {
                                         <Dropdown.Item as={Link} to="/order_for_manager" className="text-center small py-2 text-primary fw-bold">View All Orders</Dropdown.Item>
                                     )}
                            
-                                    {/* {isCustomer && (
-                                        <Dropdown.Item as={Link} to="/list_order" className="text-center small py-2 text-primary fw-bold">View Order History</Dropdown.Item>
-                                    )} */}
                                 </Dropdown.Menu>
 
                             </Dropdown>

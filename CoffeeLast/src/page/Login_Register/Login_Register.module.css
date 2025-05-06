@@ -1,37 +1,29 @@
-.Container{
+.Container {
     position: relative;
     height: 100vh;
-
-    background-size: cover; /* Điều chỉnh kích thước hình nền sao cho không bị méo */
-    background-repeat: no-repeat; /* Ngừng lặp lại hình nền */
-    background-position: center center; /* Đảm bảo hình nền được căn giữa */
-}   
-
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 .Login_Register_Canvas {
     position: fixed;
     height: 100vh;
     width: 100vw;
     top: 0;
     left: 0;
-    z-index: -1; /* Đưa Canvas ra phía sau */
-  
+    z-index: -1;
 }
-
-
-.Defaul_Layout{
+.Defaul_Layout {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100vh;
     color: white;
     transition: 300ms;
-   
-    
 }
-.Defaul_Layout>div{
+.Defaul_Layout>div {
     height: 100%;
     transition: 300ms;
-   
 }
 .Defaul {
     width: 35vw;
@@ -42,48 +34,53 @@
     align-items: center;
     justify-content: center;
     transition: 300ms;
-    /* Border with white color */
-    border: 2px solid white; 
-
-    /* Box shadow with a white color and slight blur for effect */
+    border: 2px solid white;
     box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.6);
-        /* clip-path: polygon(0% 0%,62% 0%,100% 100%,0% 100%); */
 }
-.Tite{
+.Tite {
     font-size: 3rem;
     margin-bottom: 60px;
     font-weight: bold;
     text-align: center;
 }
-
-
 .Input {
-    width:25vw;
-   height: 50px;
-   position: relative;
-   margin: 30px 0 20px 0;
-   color:  rgb(14, 7, 4);
-  
-
+    width: 25vw;
+    height: 50px;
+    position: relative;
+    margin: 30px 0 20px 0;
+    color: rgb(14, 7, 4);
 }
-.Input  label{
+.Input label {
     position: absolute;
     font-size: 1rem;
-    top:-5px;
+    top: -5px;
     left: 0;
     transform: translateY(-50%);
     font-weight: 500;
     transition: 300ms;
 }
-
-.Input .Input_error{
+.Input .Input_error {
     color: red;
     font-size: 0.9rem;
 }
-
-
-
-.Input input{
+.Input.has_error input {
+    border-bottom-color: #dc3545;
+}
+.Input.has_error label {
+    color: #dc3545;
+}
+.Input.has_error .Input_Icon {
+    color: #dc3545;
+}
+.Input_error_inline {
+    color: #dc3545;
+    font-size: 0.8em;
+    margin-top: 4px;
+    text-align: left;
+    padding-left: 5px;
+    display: block;
+}
+.Input input {
     width: 100%;
     background-color: transparent;
     border: none;
@@ -92,135 +89,154 @@
     color: rgb(85, 87, 88);
     font-size: 1rem;
 }
-
 .Input_Icon {
     position: absolute;
     right: 0;
     top: 3px;
     font-size: 1.2rem;
-   
-    
 }
-
-
-
-.Remember{
+.Remember {
     display: flex;
     justify-content: space-between;
     font-size: 1rem;
     padding: 0 10px;
-    
 }
-
-.Remember input{
-   margin-right: 10px;
-    
+.Remember input {
+    margin-right: 10px;
 }
-.Remember a{
-    
+.Remember a {
     text-decoration: underline;
 }
-
-.Input_Button{
-  
+.Input_Button {
     display: flex;
     justify-content: center;
     margin: 30px 0;
-   
-    
 }
-
-.Input_Button button{
+.Input_Button button {
     width: 100%;
     height: 50px;
     background-color: rgb(187, 15, 59);
     color: white;
     border-radius: 5px;
 }
-
-.Input_No_account{
+.Input_No_account {
     text-align: center;
     font-size: 1.2rem;
-    
 }
-
-.Input_No_account a:hover{
+.Input_No_account a:hover {
     text-decoration: underline;
 }
-
-
-canvas{
-
-    background-image: linear-gradient(
-        0deg, 
-        rgb(216, 213, 207)0%, 
-        rgb(231, 190, 125)100%
-    );
-    /* background-size: cover; /* Điều chỉnh kích thước hình nền sao cho không bị méo */
-    /* background-repeat: no-repeat; /* Ngừng lặp lại hình nền */
-    /* background-position: center center;  */
-
-    /* background-image: url(https://cdna.artstation.com/p/assets/images/images/054/944/206/large/chill-jazz-coffee-4k-cozy-coffee-shop.jpg?1665735454); */ 
+canvas {
+    background-image: linear-gradient(0deg,
+            rgb(216, 213, 207)0%,
+            rgb(231, 190, 125)100%);
 }
-
 @media (max-width: 768px) {
     .Defaul_Layout {
         display: flex;
         justify-content: center;
-    
-
-  
-       
     }
-    .Defaul_Layout>div{
+    .Defaul_Layout>div {
         width: 100%;
-      
         display: flex;
         align-items: center;
     }
-
     .Defaul {
         width: 100%;
-        height: auto; /* Đặt chiều cao tự động */
-        border: none; /* Xóa border phải */
-        box-shadow: none; /* Xóa box shadow */
-        margin-bottom: 20px; /* Thêm khoảng cách giữa các phần */
+        height: auto;
+        border: none;
+        box-shadow: none;
+        margin-bottom: 20px;
         backdrop-filter: blur(1px);
     }
-
     .Defaul>div {
-        
-       width: 100%;
-       padding: 50px;
+        width: 100%;
+        padding: 50px;
     }
-
-
     .Tite {
-        font-size: 2rem; /* Giảm kích thước chữ */
+        font-size: 2rem;
         margin-bottom: 40px;
     }
-
     .Input {
-        width: 100%; /* Giảm độ rộng */
-        margin: 20px auto; /* Căn giữa */
+        width: 100%;
+        margin: 20px auto;
     }
-
     .Input input {
-        font-size: 1rem; /* Kích thước chữ nhỏ hơn */
+        font-size: 1rem;
     }
-
     .Input_Button button {
-        width: 80%; /* Giảm kích thước nút */
-        height: 40px; /* Giảm chiều cao */
+        width: 80%;
+        height: 40px;
     }
-
     .Input_No_account {
-        font-size: 1rem; /* Kích thước chữ nhỏ hơn */
+        font-size: 1rem;
     }
-
-   
-    .Login_Register_KhoangTrong{
+    .Login_Register_KhoangTrong {
         display: none !important;
-      
     }
+}
+.LinkButton {
+    background: none;
+    border: none;
+    color: #1a73e8;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+.LinkButton:hover {
+    color: #0056b3;
+}
+.Input_error {
+    color: #dc3545;
+    font-size: 0.85em;
+    margin-top: 5px;
+    text-align: center;
+}
+.Input_success {
+    color: #28a745;
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 8px;
+    background-color: #e9f7ef;
+    border: 1px solid #a6d7b5;
+    border-radius: 4px;
+}
+.Defaul_Layout>div {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.Login_Register_Conten {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.Input input:not(:placeholder-shown)+label,
+.Input input:focus+label {
+    top: -5px;
+    left: 10px;
+    font-size: 0.75em;
+    color: #888;
+    background-color: white;
+    padding: 0 5px;
+}
+.ResetWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 1;
 }

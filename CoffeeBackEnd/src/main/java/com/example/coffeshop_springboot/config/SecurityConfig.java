@@ -58,6 +58,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/notifications/admin/**/read").hasAnyAuthority("DIRECTOR", "EMPLOYEE")
                         .requestMatchers("/order_products/order_all").hasRole("ADMIN")
                         .requestMatchers("/api/chatbot/**").permitAll()
+                        .requestMatchers("/user/login", "/user/register").permitAll()
+                        .requestMatchers("/user/request_password_reset", "/user/reset_password").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

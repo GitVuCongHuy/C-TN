@@ -1,6 +1,5 @@
 package com.example.coffeshop_springboot.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,11 +16,13 @@ public class UserAuth {
 
     private String password;
 
-    private boolean is_active;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE})
     @JoinColumn(name = "user_id")  // Foreign key referencing User
     private User user;
+
+    @Column(name = "is_active", columnDefinition = "TINYINT(1) DEFAULT 1")
+    private boolean active;
 
     // Getter and Setter methods
     public Long getAuth_id() {
@@ -31,6 +32,13 @@ public class UserAuth {
     public void setAuth_id(Long auth_id) {
         this.auth_id = auth_id;
     }
+
+     public boolean isActive() {
+         return active;
+     }
+     public void setActive(boolean active) {
+         active = active;
+     }
 
     public String getUsername() {
         return username;
@@ -48,13 +56,7 @@ public class UserAuth {
         this.password = password;
     }
 
-    public boolean isIs_active() {
-        return is_active;
-    }
 
-    public void setIs_active(boolean is_active) {
-        this.is_active = is_active;
-    }
 
     public User getUser() {
         return user;
