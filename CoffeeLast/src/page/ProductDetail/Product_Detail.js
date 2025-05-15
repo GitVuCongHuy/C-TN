@@ -68,9 +68,15 @@ const ProductDetail = () => {
               <span className="text-danger">Out of Stock</span>
             )}
           </h5>
-          <button className="btn btn-warning btn-lg shadow-sm" onClick={handleAddToCart}>
+          <button
+            className="btn btn-warning btn-lg shadow-sm"
+            onClick={handleAddToCart}
+            disabled={product.stock <= 0}
+            style={{ opacity: product.stock <= 0 ? 0.6 : 1, cursor: product.stock <= 0 ? "not-allowed" : "pointer" }}
+          >
             <FaCartPlus className="me-2" /> Add to Cart
           </button>
+
         </div>
       </div>
 

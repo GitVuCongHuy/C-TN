@@ -115,14 +115,14 @@ public class OrderController {
                 for (OrderProduct op : orderProducts) {
                     // Tính tổng giá cho từng dòng sản phẩm
                     BigDecimal lineTotal = op.getPrice().multiply(new BigDecimal(op.getQuantity()));
-                    emailBodyBuilder.append(String.format("- %d x %s (%.0f đ)\n", // Giá đã bao gồm số lượng
+                    emailBodyBuilder.append(String.format("- %d x %s (%.0f $)\n", // Giá đã bao gồm số lượng
                             op.getQuantity(),
                             op.getProduct() != null ? op.getProduct().getName() : "N/A",
                             lineTotal
                     ));
                 }
             }
-            emailBodyBuilder.append("\nTổng tiền đơn hàng: ").append(order.getTotalAmount().toPlainString()).append(" đ\n\n");
+            emailBodyBuilder.append("\nTổng tiền đơn hàng: ").append(order.getTotalAmount().toPlainString()).append(" $\n\n");
             emailBodyBuilder.append("Chúng tôi sẽ liên hệ và giao hàng sớm nhất. Xin cảm ơn!\n");
             String emailBody = emailBodyBuilder.toString();
 

@@ -1,14 +1,9 @@
-
 import styles from './Home.module.css';
 import { Carousel } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 import { Link } from "react-router-dom";
-
 import Card_Defaul from '../../components/Layout/components/Card/Card_Defaul';
-
-
 import React, { useState, useEffect } from 'react';
 
 function Card_Slidler() {
@@ -19,7 +14,6 @@ function Card_Slidler() {
                     <div>
                         <p>LATEST NEWS</p>
                     </div>
-
                 </div>
                 <Carousel className={`w-100 ${styles.Card_Slidle_Body}`}>
                     <Carousel.Item  >
@@ -36,7 +30,6 @@ function Card_Slidler() {
                                         </div>
                                     </div>
                                 </Col>
-
                                 <Col md={8}>
                                     <div className={styles.Card_Slidle_Body_Conten_Right}>
                                         <div className={styles.Card_Slidle_Body_Conten_Right_Conten}>
@@ -50,13 +43,8 @@ function Card_Slidler() {
                                     </div>
                                 </Col>
                             </Row>
-
                         </div>
-
-
                     </Carousel.Item>
-
-
                     <Carousel.Item  >
                         <div className={styles.Card_Slidle_Body_Conten}>
                             <Row>
@@ -71,7 +59,6 @@ function Card_Slidler() {
                                         </div>
                                     </div>
                                 </Col>
-
                                 <Col md={8}>
                                     <div className={styles.Card_Slidle_Body_Conten_Right}>
                                         <div className={styles.Card_Slidle_Body_Conten_Right_Conten}>
@@ -81,17 +68,11 @@ function Card_Slidler() {
                                                 Stay tuned for more updates coming soon!</p>
                                             <button><a href='/about_us'>Read More</a></button>
                                         </div>
-
                                     </div>
                                 </Col>
                             </Row>
-
                         </div>
-
-
                     </Carousel.Item>
-
-
                     <Carousel.Item  >
                         <div className={styles.Card_Slidle_Body_Conten}>
                             <Row>
@@ -106,7 +87,6 @@ function Card_Slidler() {
                                         </div>
                                     </div>
                                 </Col>
-
                                 <Col md={8}>
                                     <div className={styles.Card_Slidle_Body_Conten_Right}>
                                         <div className={styles.Card_Slidle_Body_Conten_Right_Conten}>
@@ -120,23 +100,13 @@ function Card_Slidler() {
                                     </div>
                                 </Col>
                             </Row>
-
                         </div>
-
-
                     </Carousel.Item>
-
-
-
                 </Carousel>
             </div>
         </div>
     );
-
-
 }
-
-
 
 function Header_Home() {
     return (
@@ -161,11 +131,7 @@ function Header_Home() {
     );
 }
 
-
 function List_Menu() {
-
-
-
     return (
         <div className={styles.Home_List_Menu}>
             <Row className={styles.Home_List_Menu_Conten}>
@@ -206,66 +172,54 @@ function List_Menu() {
     );
 }
 
-
 function List_Card() {
+  const [list, setList] = useState([]);
 
-    const [list, setList] = useState([]);
+  async function callData() {
+    try {
+      const response = await fetch('http://localhost:8082/product', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    async function callData() {
-        try {
-            const response = await fetch('http://localhost:8082/product', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-
-                setList(data);
-            } else {
-                console.error('Error fetching data from server');
-            }
-        } catch (error) {
-            console.error('Connection error:', error);
-        }
+      if (response.ok) {
+        const data = await response.json();
+        // Chỉ lấy sản phẩm còn hàng
+        const filtered = data.filter((item) => item.stock > 0);
+        setList(filtered.slice(0, 6)); // Chỉ lấy 6 sản phẩm đầu tiên
+      } else {
+        console.error('Error fetching data from server');
+      }
+    } catch (error) {
+      console.error('Connection error:', error);
     }
+  }
 
-    useEffect(() => {
-        callData();
-    }, []);
+  useEffect(() => {
+    callData();
+  }, []);
 
-
-
-    return (
-        <div className={styles.List_Card}  >
-            <div className={styles.Card_Slidler_Title} style={{ marginBottom: 60 }} >
-                <div>
-                    <p>FEATURED PRODUCTS</p>
-                </div>
-            </div>
-            <div>
-
-
-                <Row className='g-2'>
-                    {list.slice(0, 6).map((e, i) => (
-
-                        <Col xs={6} sm={6} md={4} key={i}>
-                            <Card_Defaul iteam={e} />
-                        </Col>
-
-
-                    ))}
-
-                </Row>
-            </div>
-
-
+  return (
+    <div className={styles.List_Card}>
+      <div className={styles.Card_Slidler_Title} style={{ marginBottom: 60 }}>
+        <div>
+          <p>FEATURED PRODUCTS</p>
         </div>
-    );
+      </div>
+      <div>
+        <Row className="g-2">
+          {list.map((item, i) => (
+            <Col xs={6} sm={6} md={4} key={i}>
+              <Card_Defaul iteam={item} />
+            </Col>
+          ))}
+        </Row>
+      </div>
+    </div>
+  );
 }
-
 
 function Home_About_Us() {
     return (
@@ -278,18 +232,13 @@ function Home_About_Us() {
             </div>
             <div className={styles.Home_About_Us_Conten} >
                 <p>Everything we do is a matter of heart, body and soul. We strive to form deep partnerships with farmers from around the world to create shared perspectives and form healthy working relationships built on trust and respect.</p>
-
-
                 <button><a href='/about_us'>READ MORE</a></button>
             </div>
-
-
             {/* <div className={styles.Home_About_Us_Title} >
                 <p>Follow on Instagram</p>
             </div> */}
-            <div className={styles.Home_About_Us_vertical_line} >
-
-            </div>
+            {/* <div className={styles.Home_About_Us_vertical_line} >
+            </div> */}
             <div>
                 <Row className="g-0">
 

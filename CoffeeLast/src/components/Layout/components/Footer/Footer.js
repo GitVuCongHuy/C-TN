@@ -23,9 +23,9 @@ const Footer = () => {
       <div className={styles.footerSection}>
         <h3>FOLLOW ALONG</h3>
         <div className={styles.socialIcons}>
-          <i className="fa fa-instagram"></i>
-          <i className="fa fa-facebook"></i>
-          <i className="fa fa-tripadvisor"></i>
+          <i className="fab fa-instagram"></i>
+          <i className="fab fa-facebook"></i>
+          <i className="fab fa-tiktok"></i>
         </div>
       </div>
       <div className={styles.footerBottom}>

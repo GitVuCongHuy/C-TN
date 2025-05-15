@@ -52,7 +52,7 @@ function ForgotPassword({ showLogin }) {
         <div className={`${Style.Login} ${Style.Defaul}`}>
             <div>
                 <div className={Style.Tite}>
-                    <p>Forgot Password</p>
+                    <p>Password Recovery</p>
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className={Style.Input}>

@@ -33,7 +33,14 @@ const UpdateProduct = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+      if (name === 'price' || name === 'stock') {
+    // Cho phép giá trị rỗng để người dùng có thể xóa tạm thời
+    if (value === '' || /^\d*$/.test(value)) {
+      setProductData({ ...productData, [name]: value });
+    }
+  } else {
     setProductData({ ...productData, [name]: value });
+  }
   };
 
   const handleSubmit = async (e) => {
@@ -93,6 +100,7 @@ const UpdateProduct = () => {
             type="number"
             id="price"
             name="price"
+            min="0"
             className="form-control"
             value={productData.price}
             onChange={handleChange}
@@ -105,6 +113,7 @@ const UpdateProduct = () => {
             type="number"
             id="stock"
             name="stock"
+            min="0"
             className="form-control"
             value={productData.stock}
             onChange={handleChange}

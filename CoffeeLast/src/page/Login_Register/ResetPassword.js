@@ -172,7 +172,7 @@ function ResetPassword() {
                             <p className={Style.Input_error} style={{ textAlign: 'center' }}>{error}</p>
                             <div className={Style.Input_No_account} style={{marginTop: '20px'}}>
                                 <button onClick={() => navigate('/login_register')} className={Style.LinkButton}>
-                                    Yêu cầu lại
+                                    Request again
                                 </button>
                             </div>
                         </div>
@@ -243,14 +243,14 @@ function ResetPassword() {
 
                             <div className={Style.Input_Button}>
                                 <button type="submit" disabled={loading}>
-                                    {loading ? 'Đang xử lý...' : 'Reset Password'}
+                                    {loading ? 'Processing...' : 'Reset Password'}
                                 </button>
                             </div>
                         </form>
                         <div className={Style.Input_No_account}>
                             {message ? ( 
                                 <button onClick={() => navigate('/login_register')} className={Style.LinkButton}>
-                                    Đăng nhập ngay
+                                    Login now
                                 </button>
                             ) : ( 
                                 <button onClick={() => navigate('/login_register')} className={Style.LinkButton}>
