@@ -58,7 +58,7 @@ const ProductDetail = () => {
           <h1 className="fw-bold mb-3">{product.name}</h1>
           <p className="text-muted">{product.description}</p>
           <h5 className="text-danger mb-3">
-            <b>Price: </b>{product.price.toLocaleString()}₫
+            <b>Price: </b>{product.price.toLocaleString()}$
           </h5>
           <h5 className="mb-4">
             <b>Stock: </b>
