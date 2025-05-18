@@ -101,7 +101,8 @@ public class UserAuth_Controller {
             return new ResponseEntity<>("User registered successfully. Username: " + registeredUserAuth.getUsername(), HttpStatus.CREATED);
         } catch (RuntimeException e) { // Bắt RuntimeException cụ thể từ service
             // e.printStackTrace(); // Ghi log lỗi này ra console hoặc file log
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST); // Trả về thông báo lỗi từ service
+            Map<String, String> errorResponse = Map.of("message", e.getMessage());
+            return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST); // Trả về thông báo lỗi từ service
         } catch (Exception e) { // Bắt các lỗi không mong muốn khác
             // e.printStackTrace();
             return new ResponseEntity<>("An unexpected error occurred during registration.", HttpStatus.INTERNAL_SERVER_ERROR);

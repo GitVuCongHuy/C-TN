@@ -238,60 +238,98 @@ function Login({ showRegister, showForgotPassword }) {
 }
 
 
-function Sign_in({ showLogin }) { 
+function Sign_in({ showLogin }) {
     const [username, setUsername] = useState('');
-    const [email, setEmail] = useState(''); 
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmpassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('');
+
+    // State riêng cho từng loại lỗi để hiển thị dưới input tương ứng
+    const [usernameError, setUsernameError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState(''); // Lỗi cho confirm password và độ dài pass
+    const [generalError, setGeneralError] = useState(''); // Lỗi chung
+
     const [loading, setLoading] = useState(false);
+
+    const clearErrors = () => {
+        setUsernameError('');
+        setEmailError('');
+        setPasswordError('');
+        setGeneralError('');
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
+        clearErrors();
+
         if (password !== confirmpassword) {
-            setError("Mật khẩu xác nhận không khớp!");
+            setPasswordError("Mật khẩu xác nhận không khớp!");
             return;
         }
+        if (password.length < 6) {
+            setPasswordError("Mật khẩu phải có ít nhất 6 ký tự.");
+            return;
+        }
+        // Các kiểm tra frontend khác nếu cần (ví dụ: username không được trống, email hợp lệ)
+
         setLoading(true);
 
         const data = {
             username: username,
             password: password,
-            email: email 
+            email: email
         };
 
         try {
-            // Endpoint vẫn là /user/register
             const response = await fetch('http://localhost:8082/user/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data) 
+                body: JSON.stringify(data)
             });
 
+            const responseData = await response.json().catch(() => null);
+
             if (response.ok) {
+                // Đăng ký thành công
                 alert('Đăng Kí Thành Công! Vui lòng đăng nhập.');
                 showLogin();
             } else {
-                let errorData;
-                try {
-                    errorData = await response.json();
-                } catch (jsonError) {
-                    errorData = { message: `Lỗi ${response.status}: ${response.statusText}` };
+                // Xử lý lỗi từ backend (response.status là 400 hoặc lỗi khác)
+                const backendMessage = responseData?.message || ""; // Lấy message từ backend
+
+                if (backendMessage) {
+                    // Kiểm tra nội dung message để xác định lỗi cụ thể
+                    if (backendMessage.toLowerCase().includes('username') && backendMessage.toLowerCase().includes('taken')) {
+                        // Nếu message chứa "username" và "taken" (hoặc "tồn tại", "đã sử dụng" tùy theo message backend)
+                        setUsernameError("Tên đăng nhập này đã tồn tại.");
+                    } else if (backendMessage.toLowerCase().includes('email') && backendMessage.toLowerCase().includes('use')) {
+                        // Nếu message chứa "email" và "in use" (hoặc "tồn tại", "đã sử dụng")
+                        setEmailError("Địa chỉ email này đã được sử dụng.");
+                    } else {
+                        // Nếu không phải lỗi trùng username hay email cụ thể từ backend,
+                        // nhưng vẫn là lỗi 400 (ví dụ: validation lỗi khác từ DTO mà bạn chưa xử lý)
+                        // hoặc một lỗi chung nào đó từ backend
+                        setGeneralError(backendMessage || "Đã có lỗi xảy ra trong quá trình đăng ký.");
+                    }
+                } else {
+                    // Nếu không có responseData.message (ví dụ: lỗi mạng, server sập, response không phải JSON)
+                    setGeneralError(`Lỗi ${response.status}: Đăng ký không thành công.`);
                 }
-                setError(errorData.message || "Đã có lỗi xảy ra!");
             }
 
-        } catch (error) {
-            console.error("Register error:", error);
-            setError('Lỗi kết nối đến máy chủ!');
+        } catch (networkError) {
+            console.error("Register network error:", networkError);
+            setGeneralError('Lỗi kết nối đến máy chủ! Vui lòng thử lại.');
         } finally {
             setLoading(false);
         }
     };
 
+    // Phần JSX giữ nguyên như lần cập nhật trước, chỉ cần đảm bảo hiển thị đúng các state lỗi:
+    // usernameError, emailError, passwordError, generalError
     return (
         <div className={`${Style.Login} ${Style.Defaul}`}>
             <div>
@@ -299,60 +337,69 @@ function Sign_in({ showLogin }) {
                     <p>REGISTER</p>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    {/* --- Login Name Input --- */}
-                    <div className={Style.Input}>
-                        <span className={Style.Input_Icon} ><i className="bi bi-person-fill"></i></span> 
+                    {/* --- Username Input --- */}
+                    <div className={`${Style.Input} ${usernameError ? Style.has_error : ''}`}>
+                        <span className={Style.Input_Icon}><i className="bi bi-person-fill"></i></span>
                         <input
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => { setUsername(e.target.value); clearErrors(); }} // Xóa lỗi khi người dùng nhập
                             type="text"
                             required
                             id="register-username"
                             placeholder=" "
                         />
                         <label htmlFor="register-username">Login Name</label>
+                        {usernameError && <span className={Style.Input_error_inline}>{usernameError}</span>}
                     </div>
 
-                    <div className={Style.Input}>
-                        <span className={Style.Input_Icon} ><i className="bi bi-envelope-fill"></i></span>
+                    {/* --- Email Input --- */}
+                    <div className={`${Style.Input} ${emailError ? Style.has_error : ''}`}>
+                        <span className={Style.Input_Icon}><i className="bi bi-envelope-fill"></i></span>
                         <input
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            type="email" 
+                            onChange={(e) => { setEmail(e.target.value); clearErrors(); }} // Xóa lỗi khi người dùng nhập
+                            type="email"
                             required
                             id="register-email"
                             placeholder=" "
                         />
                         <label htmlFor="register-email">Email</label>
+                        {emailError && <span className={Style.Input_error_inline}>{emailError}</span>}
                     </div>
 
-
-                    <div className={Style.Input}>
-                        <span className={Style.Input_Icon} ><i className="bi bi-lock-fill"></i></span>
+                    {/* --- Password Input --- */}
+                    <div className={`${Style.Input} ${passwordError.includes('6 ký tự') ? Style.has_error : ''}`}>
+                        <span className={Style.Input_Icon}><i className="bi bi-lock-fill"></i></span>
                         <input
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => { setPassword(e.target.value); clearErrors(); }} // Xóa lỗi khi người dùng nhập
                             type="password"
                             required
                             id="register-password"
                             placeholder=" "
                         />
                         <label htmlFor="register-password">Password</label>
+                         {passwordError.includes('6 ký tự') && <span className={Style.Input_error_inline}>{passwordError}</span>}
                     </div>
 
-                    <div className={Style.Input}>
-                        <span className={Style.Input_Icon} ><i className="bi bi-lock-fill"></i></span>
+                    {/* --- Confirm Password Input --- */}
+                    <div className={`${Style.Input} ${passwordError.includes('không khớp') ? Style.has_error : ''}`}>
+                        <span className={Style.Input_Icon}><i className="bi bi-lock-fill"></i></span>
                         <input
                             value={confirmpassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            onChange={(e) => { setConfirmPassword(e.target.value); clearErrors(); }} // Xóa lỗi khi người dùng nhập
                             type="password"
                             required
                             id="register-confirm-password"
                             placeholder=" "
                         />
                         <label htmlFor="register-confirm-password">Re-enter Password</label>
-                        {error && <p className={Style.Input_error_alt}>{error}</p>}
+                        {passwordError.includes('không khớp') && <span className={Style.Input_error_inline}>{passwordError}</span>}
                     </div>
+
+                    {/* Hiển thị lỗi chung nếu có */}
+                    {generalError && <p className={`${Style.Input_error} ${Style.MessageSpacing}` } style={{textAlign: 'center'}}>{generalError}</p>}
+
 
                     <div className={Style.Input_Button}>
                         <button type="submit" disabled={loading}>
