@@ -3,8 +3,6 @@ import React from "react";
 const ProductFilter = ({
   searchTitle,
   setSearchTitle,
-  // selectedBrand,
-  // setSelectedBrand,
   priceRange,
   setPriceRange,
   availabilityStatus,
@@ -27,21 +25,6 @@ const ProductFilter = ({
           onChange={(e) => setSearchTitle(e.target.value)}
         />
       </div>
-      {/* <div className="mb-3">
-        <label className="form-label">Brand</label>
-        <select
-          className="form-select"
-          value={selectedBrand}
-          onChange={(e) => setSelectedBrand(e.target.value)}
-        >
-          <option value="all">All Brands</option>
-          {Array.from(new Set(products.map((product) => product.brand))).map((brand) => (
-            <option value={brand} key={brand}>
-              {brand}
-            </option>
-          ))}
-        </select>
-      </div> */}
       <div className="mb-3">
         <label htmlFor="status-select" className="form-label">
           Status:

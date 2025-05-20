@@ -5,14 +5,12 @@ import com.example.coffeshop_springboot.dto.UpdateOrderStatusDTO;
 import com.example.coffeshop_springboot.entity.Order_coffee_entity.Order;
 import com.example.coffeshop_springboot.entity.Order_coffee_entity.OrderProduct; // Import
 import com.example.coffeshop_springboot.entity.UserAuth;
-import com.example.coffeshop_springboot.entity.Order_coffee_entity.OrderProduct;
 import com.example.coffeshop_springboot.repository.Order_coffee_repository.OrderProductRepository; // Import
 import com.example.coffeshop_springboot.service.EmailService;
 import com.example.coffeshop_springboot.service.Order_coffee_service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-// Bỏ @Value nếu không dùng shopAdminEmail nữa
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import com.example.coffeshop_springboot.dto.AdminOrderViewDTO;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -113,9 +110,8 @@ public class OrderController {
                 emailBodyBuilder.append("- Không có thông tin chi tiết sản phẩm.\n");
             } else {
                 for (OrderProduct op : orderProducts) {
-                    // Tính tổng giá cho từng dòng sản phẩm
                     BigDecimal lineTotal = op.getPrice().multiply(new BigDecimal(op.getQuantity()));
-                    emailBodyBuilder.append(String.format("- %d x %s (%.0f $)\n", // Giá đã bao gồm số lượng
+                    emailBodyBuilder.append(String.format("- %d x %s (%.0f $)\n",
                             op.getQuantity(),
                             op.getProduct() != null ? op.getProduct().getName() : "N/A",
                             lineTotal
@@ -162,14 +158,22 @@ public class OrderController {
         }
     }
     @PutMapping("/update_status")
+    // @PreAuthorize("hasAnyAuthority('DIRECTOR', 'EMPLOYEE')") // Bạn nên thêm preauthorize cho admin
     public ResponseEntity<String> updateOrderStatus(@RequestBody UpdateOrderStatusDTO dto) {
         try {
-            orderService.updateOrderStatus(dto.getOrderId(), dto.getStatusId());
-            return ResponseEntity.ok("Order status updated successfully.");
-        } catch (jakarta.persistence.EntityNotFoundException e) { // Bắt lỗi cụ thể hơn
-            log.warn("Failed to update status: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        } catch (Exception e) {
+            boolean success = orderService.updateOrderStatus(dto.getOrderId(), dto.getStatusId());
+            if (success) {
+                // Thông báo cho khách hàng đã được xử lý bên trong orderService.updateOrderStatus
+                return ResponseEntity.ok("Order status updated successfully.");
+            } else {
+                // Trường hợp service trả về false (mặc dù hiện tại nó luôn là true hoặc throw exception)
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update order status.");
+            }
+        } catch (RuntimeException e) { // Bắt lỗi chung hơn vì service có thể throw RuntimeException
+            log.warn("Failed to update status for order ID {}: {}", dto.getOrderId(), e.getMessage());
+            if (e.getMessage() != null && (e.getMessage().contains("Order not found") || e.getMessage().contains("OrderStatus not found"))) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            }
             log.error("Error updating order status for order ID {}: {}", dto.getOrderId(), e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An internal error occurred while updating status.");
         }

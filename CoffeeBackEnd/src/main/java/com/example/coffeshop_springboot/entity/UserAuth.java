@@ -18,7 +18,7 @@ public class UserAuth {
 
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE})
-    @JoinColumn(name = "user_id")  // Foreign key referencing User
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "is_active", columnDefinition = "TINYINT(1) DEFAULT 1")

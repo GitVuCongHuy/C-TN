@@ -16,7 +16,6 @@ public class Order {
     @Column(name = "order_id")
     private int orderId;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = true )
     private User user;
@@ -46,7 +45,6 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status_id", nullable = false)
-//    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     @ManyToOne

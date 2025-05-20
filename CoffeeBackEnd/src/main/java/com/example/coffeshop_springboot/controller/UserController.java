@@ -62,9 +62,7 @@ public class UserController {
         }
     }
     @PutMapping("/update_user")
-    public ResponseEntity<?> updateUserWithUrl(
-                                                @RequestHeader("Authorization") String token,
-                                                @RequestBody UserUpdateDTO userUpdateDTO) {
+    public ResponseEntity<?> updateUserWithUrl(@RequestHeader("Authorization") String token, @RequestBody UserUpdateDTO userUpdateDTO) {
         log.info("Received update request for user via URL");
         log.debug("Token received: {}", token);
         log.debug("Payload received: {}", userUpdateDTO);

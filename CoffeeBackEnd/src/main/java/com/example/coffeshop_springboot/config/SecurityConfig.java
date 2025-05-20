@@ -15,7 +15,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Autowired
@@ -55,6 +55,8 @@ public class SecurityConfig {
                                 "/**"
                         ).permitAll() // Truy cập công khai
                         .requestMatchers("/user_role/**").hasAuthority("MANAGER")
+                        .requestMatchers(HttpMethod.PUT, "/api/notifications/customer/**").hasAuthority("CUSTOMER")
+                        .requestMatchers(HttpMethod.GET, "/api/notifications/customer").hasAuthority("CUSTOMER")
                         .requestMatchers(HttpMethod.PUT, "/api/notifications/admin/**/read").hasAnyAuthority("DIRECTOR", "EMPLOYEE")
                         .requestMatchers("/order_products/order_all").hasRole("ADMIN")
                         .requestMatchers("/api/chatbot/**").permitAll()

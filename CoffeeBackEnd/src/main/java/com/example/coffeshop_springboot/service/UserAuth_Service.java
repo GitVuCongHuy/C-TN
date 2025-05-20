@@ -1,6 +1,5 @@
 package com.example.coffeshop_springboot.service;
 
-import com.example.coffeshop_springboot.controller.UserAuth_Controller;
 import com.example.coffeshop_springboot.entity.Role;
 import com.example.coffeshop_springboot.entity.User;
 import com.example.coffeshop_springboot.entity.UserAuth;

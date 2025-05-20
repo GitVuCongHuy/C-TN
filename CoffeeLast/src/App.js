@@ -34,7 +34,7 @@ function App() {
             {/* Trang Binh Thuong */}
               <Route path="/" element={<Default_Layout><Home/></Default_Layout>} />
               <Route path="/about_us" element={<Default_Layout><About_us/></Default_Layout>} />
-              <Route path="/menu" element={<Default_Layout><Menu /></Default_Layout>} />
+              <Route path="/menu" element={<No_Footer_Layout><Menu /></No_Footer_Layout>} />
               <Route path="/cart" element={<No_Footer_Layout><Cart/></No_Footer_Layout>} />
               <Route path="/login_register" element={<Slider_Layout><Login_Register/></Slider_Layout>} />
               <Route path="/product/:id" element={<Default_Layout><ProductDetail /></Default_Layout>} />
@@ -42,7 +42,7 @@ function App() {
               <Route path="/reset-password" element={<ResetPassword />} />
               {/* KhachHang */}
               <Route path="/update_user" element={<Default_Layout><UpdateUser/></Default_Layout>} />
-              <Route path="/payment" element={<Default_Layout><Payment/></Default_Layout>} />   
+              <Route path="/payment" element={<No_Footer_Layout><Payment/></No_Footer_Layout>} />   
               <Route path="/list_order" element={<No_Footer_Layout><List_Oders/></No_Footer_Layout>} />
               {/* Owner */}
               <Route path="/order_for_manager" element={<No_Footer_Layout><AdminOrderManagement/></No_Footer_Layout>} />

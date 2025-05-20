@@ -8,12 +8,9 @@ const CoffeeMenu = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedBrand, setSelectedBrand] = useState("all");
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [searchTitle, setSearchTitle] = useState("");
   const [availabilityStatus, setAvailabilityStatus] = useState("inStock");
-  // const [selectedBranch, setSelectedBranch] = useState("all"); 
-  // const [branches, setBranches] = useState(["all", "Base 1", "Base 2", "Base 3"]);
   const itemsPerPage = 12;
 
 useEffect(() => {
@@ -39,7 +36,6 @@ useEffect(() => {
 
 
   const filteredProducts = products.filter((product) => {
-    // const matchesBrand = selectedBrand === "all" || product.brand === selectedBrand;
     const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
     const matchesTitle =
       searchTitle === "" || product.title.toLowerCase().includes(searchTitle.toLowerCase());
@@ -51,8 +47,6 @@ useEffect(() => {
         ? product.stock < 1
         : true;
     return matchesPrice && matchesTitle && matchesAvailability;
-    // const matchesBranch = selectedBranch === "all" || product.branch === selectedBranch;
-    // return matchesBrand && matchesPrice && matchesTitle && matchesAvailability && matchesBranch;
   });
   
 
@@ -73,29 +67,9 @@ useEffect(() => {
     <div className="container mt-5">
       <div className="row">
         <div className="col-3">
-          {/* <div className="mb-3">
-            <label htmlFor="branch-select" className="form-label">
-              Select Base:
-            </label>
-            <select
-              id="branch-select"
-              className="form-select"
-              value={selectedBranch}
-              onChange={(e) => setSelectedBranch(e.target.value)}
-            >
-              {branches.map((branch) => (
-                <option key={branch} value={branch}>
-                  {branch}
-                </option>
-              ))}
-            </select>
-          </div> */}
-
           <ProductFilter
             searchTitle={searchTitle}
             setSearchTitle={setSearchTitle}
-            // selectedBrand={selectedBrand}
-            // setSelectedBrand={setSelectedBrand}
             priceRange={priceRange}
             setPriceRange={setPriceRange}
             availabilityStatus={availabilityStatus}
@@ -103,7 +77,6 @@ useEffect(() => {
             products={products}
           />
         </div>
-
         <div className="col-9">
         <div
           style={{
@@ -114,12 +87,9 @@ useEffect(() => {
           }}
         >
           {currentItems.map((e) => (
-           
               <MenuCard product={e}  />
           ))}
         </div>
-
-
           {totalPages > 1 && (
            <nav>
            <ul className="pagination justify-content-center" style={{ margin: "10px 0" }}>
@@ -144,7 +114,6 @@ useEffect(() => {
              ))}
            </ul>
          </nav>
-         
           )}
         </div>
       </div>
